@@ -10,8 +10,7 @@
 
 **Tupper** gives AI agents an isolated environment to execute code, run shell commands, and read and write files — without putting the host at risk. It's a self-hostable, **platform-agnostic** alternative to hosted code-execution sandboxes like [E2B](https://e2b.dev), [Daytona](https://www.daytona.io), and [Modal](https://modal.com): the same E2B-style SDK, but running on your own machine through [Apple Containers](https://github.com/apple/container) on macOS today (with Firecracker for Linux and WSL for Windows on the way).
 
-<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/1f255fe0-6343-44ed-b96b-e466a2a8db48" />
-
+<img width="1774" height="887" src="https://github.com/user-attachments/assets/d0de061b-a8ff-4e8a-9168-0fd1ba8c09a9" />
 
 > [!NOTE]
 > Tupper is in early development. `@tupper/core`, `@tupper/container`, and `@tupper/sdk` are functional; APIs may change before 1.0.

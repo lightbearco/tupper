@@ -1,0 +1,71 @@
+{
+	"name": "@tupper/mcp",
+	"version": "0.1.0",
+	"description": "Model Context Protocol server for Tupper sandboxes.",
+	"keywords": [
+		"tupper",
+		"sandbox",
+		"sandboxing",
+		"mcp",
+		"model-context-protocol",
+		"ai-agents",
+		"agent-sandbox",
+		"code-execution",
+		"self-hosted"
+	],
+	"license": "MIT",
+	"author": "Tupper contributors",
+	"homepage": "https://github.com/lightbearco/tupper/tree/main/packages/mcp#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/lightbearco/tupper.git",
+		"directory": "packages/mcp"
+	},
+	"bugs": {
+		"url": "https://github.com/lightbearco/tupper/issues"
+	},
+	"type": "module",
+	"sideEffects": false,
+	"exports": {
+		".": {
+			"bun": "./src/index.ts",
+			"import": {
+				"types": "./dist/index.d.mts",
+				"default": "./dist/index.mjs"
+			},
+			"require": {
+				"types": "./dist/index.d.cts",
+				"default": "./dist/index.cjs"
+			}
+		}
+	},
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.cts",
+	"bin": {
+		"tupper-mcp": "./dist/mcp.mjs"
+	},
+	"files": [
+		"dist",
+		"src"
+	],
+	"scripts": {
+		"build": "tsdown",
+		"typecheck": "tsc --noEmit",
+		"check:publish": "publint --strict && attw --pack ."
+	},
+	"engines": {
+		"node": ">=18"
+	},
+	"dependencies": {
+		"@modelcontextprotocol/sdk": "^1.24.3",
+		"@tupper/sdk": "workspace:*",
+		"zod": "^4.0.0"
+	},
+	"devDependencies": {
+		"@tupper/core": "workspace:*"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}

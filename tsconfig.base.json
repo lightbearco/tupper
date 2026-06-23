@@ -1,0 +1,34 @@
+{
+	"compilerOptions": {
+		// Environment setup & latest features
+		"lib": ["ESNext"],
+		"target": "ESNext",
+		"module": "Preserve",
+		"moduleDetection": "force",
+		"allowJs": true,
+		// TS 6 no longer auto-discovers @types/* from Bun's isolated store, so
+		// reference Bun's types explicitly (they also bundle Node's globals).
+		"types": ["bun"],
+
+		// Bundler mode
+		"moduleResolution": "bundler",
+		// Resolve workspace `@tupper/*` imports to TS source via the "bun" export
+		// condition, so typecheck reads source (not the built dist/*.d.ts).
+		"customConditions": ["bun"],
+		"allowImportingTsExtensions": true,
+		"verbatimModuleSyntax": true,
+		"noEmit": true,
+
+		// Best practices
+		"strict": true,
+		"skipLibCheck": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUncheckedIndexedAccess": true,
+		"noImplicitOverride": true,
+
+		// Some stricter flags (disabled by default)
+		"noUnusedLocals": false,
+		"noUnusedParameters": false,
+		"noPropertyAccessFromIndexSignature": false
+	}
+}

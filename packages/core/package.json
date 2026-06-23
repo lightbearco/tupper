@@ -1,0 +1,78 @@
+{
+	"name": "@tupper/core",
+	"version": "0.1.0",
+	"description": "Backend-agnostic sandbox abstraction for Tupper.",
+	"keywords": [
+		"tupper",
+		"sandbox",
+		"sandboxing",
+		"ai-agents",
+		"ai-agent",
+		"agent-sandbox",
+		"code-execution",
+		"code-sandbox",
+		"llm",
+		"containers",
+		"isolation",
+		"e2b",
+		"e2b-alternative"
+	],
+	"license": "MIT",
+	"author": "Tupper contributors",
+	"homepage": "https://github.com/lightbearco/tupper/tree/main/packages/core#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/lightbearco/tupper.git",
+		"directory": "packages/core"
+	},
+	"bugs": {
+		"url": "https://github.com/lightbearco/tupper/issues"
+	},
+	"type": "module",
+	"sideEffects": false,
+	"exports": {
+		".": {
+			"bun": "./src/index.ts",
+			"import": {
+				"types": "./dist/index.d.mts",
+				"default": "./dist/index.mjs"
+			},
+			"require": {
+				"types": "./dist/index.d.cts",
+				"default": "./dist/index.cjs"
+			}
+		},
+		"./testing": {
+			"bun": "./src/testing.ts",
+			"import": {
+				"types": "./dist/testing.d.mts",
+				"default": "./dist/testing.mjs"
+			},
+			"require": {
+				"types": "./dist/testing.d.cts",
+				"default": "./dist/testing.cjs"
+			}
+		}
+	},
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.cts",
+	"files": [
+		"dist",
+		"src"
+	],
+	"scripts": {
+		"build": "tsdown",
+		"typecheck": "tsc --noEmit",
+		"check:publish": "publint --strict && attw --pack . --profile node16"
+	},
+	"engines": {
+		"node": ">=18"
+	},
+	"dependencies": {
+		"zod": "^4.0.0"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}

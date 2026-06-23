@@ -1,0 +1,58 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+# Needed by changesets/action: write version-bump commits / tags and open the
+# "Version Packages" pull request.
+permissions:
+  contents: write
+  pull-requests: write
+
+# Never cancel an in-flight publish.
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Version or publish
+    runs-on: ubuntu-latest
+    # Scopes the npm token to main-triggered runs (no reviewers = no manual gate).
+    environment: release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Full history so Changesets can diff against the base branch.
+          fetch-depth: 0
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      # Auth for the registry. An .npmrc _authToken line is honored by both
+      # `bun publish` (used by changesets here) and `npm publish`, unlike the
+      # NPM_CONFIG_TOKEN env var which only bun reads.
+      - name: Configure npm auth
+        run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      # On main with pending changesets, this opens/updates a "Version Packages" PR.
+      # When that PR merges (no changesets left), it runs `bun run release`, which
+      # publishes via `bun publish` (rewrites workspace:* -> resolved versions).
+      - name: Create release PR or publish
+        uses: changesets/action@v1
+        with:
+          version: bun run version
+          publish: bun run release
+          commit: "chore: version packages"
+          title: "chore: version packages"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,67 @@
+{
+	"name": "@tupper/mastra",
+	"version": "0.1.0",
+	"description": "Tupper sandbox backend for Mastra workspaces.",
+	"keywords": [
+		"tupper",
+		"sandbox",
+		"mastra",
+		"workspace",
+		"ai-agents",
+		"agent-sandbox",
+		"code-execution"
+	],
+	"license": "MIT",
+	"author": "Tupper contributors",
+	"homepage": "https://github.com/lightbearco/tupper/tree/main/packages/mastra#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/lightbearco/tupper.git",
+		"directory": "packages/mastra"
+	},
+	"bugs": {
+		"url": "https://github.com/lightbearco/tupper/issues"
+	},
+	"type": "module",
+	"sideEffects": false,
+	"exports": {
+		".": {
+			"bun": "./src/index.ts",
+			"import": {
+				"types": "./dist/index.d.mts",
+				"default": "./dist/index.mjs"
+			},
+			"require": {
+				"types": "./dist/index.d.cts",
+				"default": "./dist/index.cjs"
+			}
+		}
+	},
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.cts",
+	"files": [
+		"dist",
+		"src"
+	],
+	"scripts": {
+		"build": "tsdown",
+		"typecheck": "tsc --noEmit",
+		"check:publish": "publint --strict && attw --pack ."
+	},
+	"engines": {
+		"node": ">=18"
+	},
+	"dependencies": {
+		"@tupper/sdk": "workspace:*"
+	},
+	"peerDependencies": {
+		"@mastra/core": ">=1.0.0-0"
+	},
+	"devDependencies": {
+		"@mastra/core": "^1.45.0"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}

@@ -1,0 +1,80 @@
+{
+	"name": "@tupper/sdk",
+	"version": "0.1.0",
+	"description": "E2B-style SDK for Tupper sandboxes.",
+	"keywords": [
+		"tupper",
+		"sandbox",
+		"sandboxing",
+		"sdk",
+		"ai-agents",
+		"ai-agent",
+		"agent-sandbox",
+		"code-interpreter",
+		"code-execution",
+		"e2b",
+		"e2b-alternative",
+		"llm",
+		"containers",
+		"self-hosted"
+	],
+	"license": "MIT",
+	"author": "Tupper contributors",
+	"homepage": "https://github.com/lightbearco/tupper/tree/main/packages/sdk#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/lightbearco/tupper.git",
+		"directory": "packages/sdk"
+	},
+	"bugs": {
+		"url": "https://github.com/lightbearco/tupper/issues"
+	},
+	"type": "module",
+	"sideEffects": false,
+	"exports": {
+		".": {
+			"bun": "./src/index.ts",
+			"import": {
+				"types": "./dist/index.d.mts",
+				"default": "./dist/index.mjs"
+			},
+			"require": {
+				"types": "./dist/index.d.cts",
+				"default": "./dist/index.cjs"
+			}
+		}
+	},
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.cts",
+	"files": [
+		"dist",
+		"src"
+	],
+	"scripts": {
+		"build": "tsdown",
+		"typecheck": "tsc --noEmit",
+		"check:publish": "publint --strict && attw --pack ."
+	},
+	"engines": {
+		"node": ">=18"
+	},
+	"dependencies": {
+		"@tupper/core": "workspace:*"
+	},
+	"peerDependencies": {
+		"@tupper/container": "workspace:*",
+		"@tupper/firecracker": "^0.1.0"
+	},
+	"peerDependenciesMeta": {
+		"@tupper/container": {
+			"optional": true
+		},
+		"@tupper/firecracker": {
+			"optional": true
+		}
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}

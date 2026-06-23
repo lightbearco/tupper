@@ -1,0 +1,35 @@
+name: Bug report
+description: Report a problem with Tupper
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for taking the time to file a bug report!
+  - type: input
+    id: package
+    attributes:
+      label: Package & version
+      placeholder: "@tupper/sdk 0.1.0"
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: A clear description of the bug, including what you expected to happen.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: Minimal steps or a code sample that reproduces the issue.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS and version, Node or Bun version, and `container --version` if relevant.
+    validations:
+      required: false

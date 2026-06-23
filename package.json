@@ -1,0 +1,42 @@
+{
+	"name": "tupper",
+	"description": "Sandboxed environments for AI agents, backed by Apple Containers.",
+	"version": "0.1.0",
+	"module": "index.ts",
+	"type": "module",
+	"private": true,
+	"license": "MIT",
+	"author": "Tupper contributors",
+	"homepage": "https://github.com/lightbearco/tupper#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/lightbearco/tupper.git"
+	},
+	"bugs": {
+		"url": "https://github.com/lightbearco/tupper/issues"
+	},
+	"workspaces": [
+		"packages/*"
+	],
+	"scripts": {
+		"check": "biome check .",
+		"check:fix": "biome check --write .",
+		"ci": "biome ci .",
+		"typecheck": "tsc --noEmit && bun run --filter='@tupper/*' typecheck",
+		"test": "bun test",
+		"build": "bun run --filter='@tupper/core' build && bun run --filter='@tupper/container' --filter='@tupper/firecracker' --filter='@tupper/sdk' build && bun run --filter='@tupper/deepagents' --filter='@tupper/mastra' --filter='@tupper/api' --filter='@tupper/cli' --filter='@tupper/mcp' build",
+		"check:publish": "bun run build && bun run --filter='@tupper/*' check:publish",
+		"changeset": "changeset",
+		"version": "changeset version",
+		"release": "bun run check:publish && changeset publish"
+	},
+	"devDependencies": {
+		"@arethetypeswrong/cli": "^0.18.4",
+		"@biomejs/biome": "2.5.1",
+		"@changesets/cli": "^2.31.0",
+		"@types/bun": "latest",
+		"publint": "^0.3.21",
+		"tsdown": "^0.22.3",
+		"typescript": "^6.0.0"
+	}
+}

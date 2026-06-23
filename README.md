@@ -72,18 +72,41 @@ More in [Getting started](docs/getting-started.md) and the [SDK reference](docs/
 
 ## Packages
 
-| Package | Version | Status | Description |
-| --- | --- | --- | --- |
-| [`@tupper/core`](packages/core) | [![npm](https://img.shields.io/npm/v/@tupper/core)](https://www.npmjs.com/package/@tupper/core) | ✅ | Backend-agnostic sandbox abstraction, shared types, Zod schemas, and dynamic backend resolution. |
-| [`@tupper/container`](packages/container) | [![npm](https://img.shields.io/npm/v/@tupper/container)](https://www.npmjs.com/package/@tupper/container) | ✅ | Apple Containers sandbox backend (`container` CLI, macOS 26+). |
-| [`@tupper/sdk`](packages/sdk) | [![npm](https://img.shields.io/npm/v/@tupper/sdk)](https://www.npmjs.com/package/@tupper/sdk) | ✅ | E2B-style `Sandbox` facade over core. |
-| [`@tupper/firecracker`](packages/firecracker) | [![npm](https://img.shields.io/npm/v/@tupper/firecracker)](https://www.npmjs.com/package/@tupper/firecracker) | 🧪 Linux | Firecracker microVM backend (nerdctl / firecracker-containerd). |
-| [`@tupper/deepagents`](packages/deepagents) | [![npm](https://img.shields.io/npm/v/@tupper/deepagents)](https://www.npmjs.com/package/@tupper/deepagents) | ✅ | LangChain deepagents sandbox backend. |
-| [`@tupper/mastra`](packages/mastra) | [![npm](https://img.shields.io/npm/v/@tupper/mastra)](https://www.npmjs.com/package/@tupper/mastra) | ✅ | Mastra `WorkspaceSandbox` backend. |
-| [`@tupper/cli`](packages/cli) | [![npm](https://img.shields.io/npm/v/@tupper/cli)](https://www.npmjs.com/package/@tupper/cli) | ✅ | `tupper` command-line interface (built on commander). |
-| [`@tupper/api`](packages/api) | [![npm](https://img.shields.io/npm/v/@tupper/api)](https://www.npmjs.com/package/@tupper/api) | ✅ | HTTP API over the SDK (built on Hono). |
-| [`@tupper/mcp`](packages/mcp) | [![npm](https://img.shields.io/npm/v/@tupper/mcp)](https://www.npmjs.com/package/@tupper/mcp) | ✅ | Model Context Protocol server. |
-| [`@tupper/wsl`](packages/wsl) | — | 🔜 Planned | WSL backend for Windows. |
+### Core
+
+| Package | Version | Description |
+| --- | --- | --- |
+| [`@tupper/core`](packages/core) | [![npm](https://img.shields.io/npm/v/@tupper/core)](https://www.npmjs.com/package/@tupper/core) | Backend-agnostic sandbox abstraction, shared types, Zod schemas, and dynamic backend resolution. |
+
+### Backends
+
+Self-register on import; `@tupper/core` selects one for the host platform.
+
+| Package | Version | Description |
+| --- | --- | --- |
+| [`@tupper/container`](packages/container) | [![npm](https://img.shields.io/npm/v/@tupper/container)](https://www.npmjs.com/package/@tupper/container) | Apple Containers (`container` CLI, macOS 26+). |
+| [`@tupper/firecracker`](packages/firecracker) | [![npm](https://img.shields.io/npm/v/@tupper/firecracker)](https://www.npmjs.com/package/@tupper/firecracker) | Firecracker microVMs for Linux (nerdctl / firecracker-containerd). 🧪 Experimental. |
+| [`@tupper/wsl`](packages/wsl) | — | WSL for Windows. 🔜 Planned. |
+
+### Frontends
+
+Ways to drive sandboxes, all built on `@tupper/sdk`.
+
+| Package | Version | Description |
+| --- | --- | --- |
+| [`@tupper/sdk`](packages/sdk) | [![npm](https://img.shields.io/npm/v/@tupper/sdk)](https://www.npmjs.com/package/@tupper/sdk) | E2B-style `Sandbox` facade over core — the main programmatic API. |
+| [`@tupper/cli`](packages/cli) | [![npm](https://img.shields.io/npm/v/@tupper/cli)](https://www.npmjs.com/package/@tupper/cli) | `tupper` command-line interface. |
+| [`@tupper/api`](packages/api) | [![npm](https://img.shields.io/npm/v/@tupper/api)](https://www.npmjs.com/package/@tupper/api) | HTTP API over the SDK (Hono). |
+| [`@tupper/mcp`](packages/mcp) | [![npm](https://img.shields.io/npm/v/@tupper/mcp)](https://www.npmjs.com/package/@tupper/mcp) | Model Context Protocol server. |
+
+### Integrations
+
+Drop-in sandbox backends for agent frameworks.
+
+| Package | Version | Description |
+| --- | --- | --- |
+| [`@tupper/deepagents`](packages/deepagents) | [![npm](https://img.shields.io/npm/v/@tupper/deepagents)](https://www.npmjs.com/package/@tupper/deepagents) | LangChain deepagents sandbox backend. |
+| [`@tupper/mastra`](packages/mastra) | [![npm](https://img.shields.io/npm/v/@tupper/mastra)](https://www.npmjs.com/package/@tupper/mastra) | Mastra `WorkspaceSandbox` backend. |
 
 ## Architecture
 

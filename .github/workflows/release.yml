@@ -37,7 +37,7 @@ jobs:
         run: bun install --frozen-lockfile
 
       # Auth for the registry. An .npmrc _authToken line is honored by both
-      # `bun publish` (used by changesets here) and `npm publish`, unlike the
+      # `bun publish` (used by the ci:publish step) and `npm publish`, unlike the
       # NPM_CONFIG_TOKEN env var which only bun reads.
       - name: Configure npm auth
         run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
@@ -45,13 +45,13 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       # On main with pending changesets, this opens/updates a "Version Packages" PR.
-      # When that PR merges (no changesets left), it runs `bun run release`, which
+      # When that PR merges (no changesets left), it runs `bun run ci:publish`, which
       # publishes via `bun publish` (rewrites workspace:* -> resolved versions).
       - name: Create release PR or publish
         uses: changesets/action@v1
         with:
-          version: bun run version
-          publish: bun run release
+          version: bun run ci:version
+          publish: bun run ci:publish
           commit: "chore: version packages"
           title: "chore: version packages"
         env:

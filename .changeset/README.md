@@ -22,8 +22,10 @@ On every push to `main`, the **Release** GitHub Action runs Changesets:
 - If there are pending changesets, it opens (or updates) a **"Version Packages"** PR
   that bumps versions, updates `CHANGELOG.md` files, and removes the consumed
   changesets.
-- When that PR is merged, the same workflow runs `changeset publish` to push the
-  updated packages to npm.
+- When that PR is merged, the same workflow runs `bun run ci:publish`, which
+  publishes each package with `bun publish` (rewriting `workspace:*` to resolved
+  versions — `changeset publish`/`npm publish` does **not** do this) and tags the
+  release with `changeset tag`.
 
 See the [Changesets docs](https://github.com/changesets/changesets/blob/main/docs/intro-to-using-changesets.md)
 for details.

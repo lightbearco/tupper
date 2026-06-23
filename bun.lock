@@ -16,7 +16,7 @@
     },
     "packages/api": {
       "name": "@tupper/api",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "bin": {
         "tupper-api": "./dist/server.mjs",
       },
@@ -30,7 +30,7 @@
     },
     "packages/cli": {
       "name": "@tupper/cli",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "bin": {
         "tupper": "./dist/cli.mjs",
       },
@@ -45,21 +45,21 @@
     },
     "packages/container": {
       "name": "@tupper/container",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "dependencies": {
         "@tupper/core": "workspace:*",
       },
     },
     "packages/core": {
       "name": "@tupper/core",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "dependencies": {
         "zod": "^4.0.0",
       },
     },
     "packages/deepagents": {
       "name": "@tupper/deepagents",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "dependencies": {
         "@tupper/sdk": "workspace:*",
       },
@@ -72,14 +72,14 @@
     },
     "packages/firecracker": {
       "name": "@tupper/firecracker",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "dependencies": {
         "@tupper/core": "workspace:*",
       },
     },
     "packages/mastra": {
       "name": "@tupper/mastra",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "dependencies": {
         "@tupper/sdk": "workspace:*",
       },
@@ -92,7 +92,7 @@
     },
     "packages/mcp": {
       "name": "@tupper/mcp",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "bin": {
         "tupper-mcp": "./dist/mcp.mjs",
       },
@@ -107,13 +107,13 @@
     },
     "packages/sdk": {
       "name": "@tupper/sdk",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "dependencies": {
         "@tupper/core": "workspace:*",
       },
       "peerDependencies": {
         "@tupper/container": "workspace:*",
-        "@tupper/firecracker": "^0.1.0",
+        "@tupper/firecracker": "^0.1.1",
       },
       "optionalPeers": [
         "@tupper/container",

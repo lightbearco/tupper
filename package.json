@@ -27,8 +27,8 @@
 		"build": "bun run --filter='@tupper/core' build && bun run --filter='@tupper/container' --filter='@tupper/firecracker' --filter='@tupper/sdk' build && bun run --filter='@tupper/deepagents' --filter='@tupper/mastra' --filter='@tupper/api' --filter='@tupper/cli' --filter='@tupper/mcp' build",
 		"check:publish": "bun run build && bun run --filter='@tupper/*' check:publish",
 		"changeset": "changeset",
-		"version": "changeset version",
-		"release": "bun run check:publish && changeset publish"
+		"ci:version": "changeset version && bun update",
+		"ci:publish": "bun run check:publish && for dir in packages/*/; do [ -f \"$dir/package.json\" ] || continue; (cd \"$dir\" && bun publish --tolerate-republish) || exit 1; done && changeset tag"
 	},
 	"devDependencies": {
 		"@arethetypeswrong/cli": "^0.18.4",
@@ -37,6 +37,6 @@
 		"@types/bun": "latest",
 		"publint": "^0.3.21",
 		"tsdown": "^0.22.3",
-		"typescript": "^6.0.0"
+		"typescript": "^6.0.3"
 	}
 }

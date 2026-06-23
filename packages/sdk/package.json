@@ -1,6 +1,6 @@
 {
 	"name": "@tupper/sdk",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "E2B-style SDK for Tupper sandboxes.",
 	"keywords": [
 		"tupper",
@@ -64,7 +64,7 @@
 	},
 	"peerDependencies": {
 		"@tupper/container": "workspace:*",
-		"@tupper/firecracker": "^0.1.0"
+		"@tupper/firecracker": "^0.1.1"
 	},
 	"peerDependenciesMeta": {
 		"@tupper/container": {

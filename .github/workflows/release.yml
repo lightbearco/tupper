@@ -36,9 +36,9 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
-      # Auth for the registry. An .npmrc _authToken line is honored by both
-      # `bun publish` (used by the ci:publish step) and `npm publish`, unlike the
-      # NPM_CONFIG_TOKEN env var which only bun reads.
+      # Registry auth. `bun publish` (in ci:publish) authenticates via the
+      # NPM_CONFIG_TOKEN env var set on the publish step below — in CI it does
+      # NOT read this ~/.npmrc _authToken line; that only covers npm-based tooling.
       - name: Configure npm auth
         run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
         env:
@@ -56,3 +56,4 @@ jobs:
           title: "chore: version packages"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_CONFIG_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -11,12 +11,12 @@
         "@types/bun": "latest",
         "publint": "^0.3.21",
         "tsdown": "^0.22.3",
-        "typescript": "^6.0.0",
+        "typescript": "^6.0.3",
       },
     },
     "packages/api": {
       "name": "@tupper/api",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "bin": {
         "tupper-api": "./dist/server.mjs",
       },
@@ -27,10 +27,14 @@
         "hono": "^4.6.14",
         "zod": "^4.0.0",
       },
+      "optionalDependencies": {
+        "@tupper/container": "workspace:*",
+        "@tupper/firecracker": "workspace:*",
+      },
     },
     "packages/cli": {
       "name": "@tupper/cli",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "bin": {
         "tupper": "./dist/cli.mjs",
       },
@@ -41,6 +45,10 @@
       },
       "devDependencies": {
         "@tupper/core": "workspace:*",
+      },
+      "optionalDependencies": {
+        "@tupper/container": "workspace:*",
+        "@tupper/firecracker": "workspace:*",
       },
     },
     "packages/container": {
@@ -92,7 +100,7 @@
     },
     "packages/mcp": {
       "name": "@tupper/mcp",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "bin": {
         "tupper-mcp": "./dist/mcp.mjs",
       },
@@ -103,6 +111,10 @@
       },
       "devDependencies": {
         "@tupper/core": "workspace:*",
+      },
+      "optionalDependencies": {
+        "@tupper/container": "workspace:*",
+        "@tupper/firecracker": "workspace:*",
       },
     },
     "packages/sdk": {

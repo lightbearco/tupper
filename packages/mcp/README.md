@@ -4,30 +4,26 @@
 
 ## Run
 
-The server needs a sandbox **backend** installed alongside it — [`@tupper/container`](../container) on macOS, [`@tupper/firecracker`](../firecracker) on Linux. Install both in a single command with `npx -p` so the backend is present when the server resolves it:
-
 ```bash
-# macOS
-npx -y -p @tupper/mcp -p @tupper/container tupper-mcp
-
-# Linux (experimental)
-npx -y -p @tupper/mcp -p @tupper/firecracker tupper-mcp
+npx @tupper/mcp
 ```
 
-Register it with an MCP client, e.g. Claude Desktop's `claude_desktop_config.json` or Cursor's `mcp.json` (on Linux, swap `@tupper/container` for `@tupper/firecracker`):
+The platform sandbox **backend** is installed automatically — [`@tupper/container`](../container) on macOS, [`@tupper/firecracker`](../firecracker) on Linux (an optional dependency, selected by your OS).
+
+Register it with an MCP client, e.g. Claude Desktop's `claude_desktop_config.json` or Cursor's `mcp.json`:
 
 ```json
 {
   "mcpServers": {
     "tupper": {
       "command": "npx",
-      "args": ["-y", "-p", "@tupper/mcp", "-p", "@tupper/container", "tupper-mcp"]
+      "args": ["-y", "@tupper/mcp"]
     }
   }
 }
 ```
 
-> Running just `npx @tupper/mcp` installs the server without a backend, so `create_sandbox` fails with *"No available sandbox backend"*. The `-p` flags install the backend in the same step.
+> If your installer skips optional dependencies (e.g. `--omit=optional`), install a backend explicitly: `npm i @tupper/container` (macOS) or `@tupper/firecracker` (Linux).
 
 ## Tools
 

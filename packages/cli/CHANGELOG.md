@@ -1,5 +1,13 @@
 # @tupper/cli
 
+## 0.1.2
+
+### Patch Changes
+
+- Install a sandbox backend automatically with the CLI, API, and MCP frontends.
+
+  Each frontend now declares the backends as `optionalDependencies`, so the one matching the host platform installs on its own (`@tupper/container` on macOS, `@tupper/firecracker` on Linux; the rest are skipped via their `os` field). `npx @tupper/mcp`, `npx @tupper/api`, and `npm i -g @tupper/cli` now work without separately installing a backend — fixing the "No available sandbox backend" error on a fresh run.
+
 ## 0.1.1
 
 ### Patch Changes

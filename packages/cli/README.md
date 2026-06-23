@@ -4,13 +4,13 @@ Command-line interface for [Tupper](../../README.md) sandboxes, built on [comman
 
 ## Install
 
-The CLI needs a sandbox **backend** installed alongside it — [`@tupper/container`](../container) on macOS, [`@tupper/firecracker`](../firecracker) on Linux:
-
 ```bash
-npm install -g @tupper/cli @tupper/container            # macOS
-# or run ad-hoc (installs the backend for the invocation)
-npx -y -p @tupper/cli -p @tupper/container tupper create
+npm install -g @tupper/cli
+# or run ad-hoc
+npx @tupper/cli --help
 ```
+
+The platform sandbox **backend** ([`@tupper/container`](../container) on macOS, [`@tupper/firecracker`](../firecracker) on Linux) is installed automatically as an optional dependency.
 
 ## Commands
 

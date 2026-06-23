@@ -4,22 +4,20 @@ HTTP API for [Tupper](../../README.md) sandboxes, built on [Hono](https://hono.d
 
 ## Run the server
 
-Run the standalone server with the `tupper-api` bin. It needs a sandbox **backend** installed alongside it — [`@tupper/container`](../container) on macOS, [`@tupper/firecracker`](../firecracker) on Linux — so install both together with `npx -p`:
+Run the standalone server with the `tupper-api` bin — no install needed. The platform sandbox **backend** ([`@tupper/container`](../container) on macOS, [`@tupper/firecracker`](../firecracker) on Linux) is installed automatically as an optional dependency:
 
 ```bash
-# macOS
-npx -y -p @tupper/api -p @tupper/container tupper-api
-
-# Linux (experimental): swap @tupper/container for @tupper/firecracker
-npx -y -p @tupper/api -p @tupper/firecracker tupper-api
+npx @tupper/api          # npm
+pnpm dlx @tupper/api     # pnpm
+bunx @tupper/api         # bun
 ```
 
 The port and host are optional — set them with flags or environment variables:
 
 ```bash
-npx -y -p @tupper/api -p @tupper/container tupper-api --port 8080 --host 0.0.0.0
+npx @tupper/api --port 8080 --host 0.0.0.0
 # or
-PORT=8080 HOST=0.0.0.0 npx -y -p @tupper/api -p @tupper/container tupper-api
+PORT=8080 HOST=0.0.0.0 npx @tupper/api
 ```
 
 From a checkout of this package, `bun run start` runs the built server (`node ./dist/server.mjs`) after `bun run build`.
@@ -37,7 +35,7 @@ A flag takes precedence over its environment variable. The `tupper-api` bin uses
 
 The sandbox backend is resolved **once, at boot** — when `createApp()` runs — and reused for the lifetime of the app. There is no per-request backend selection. By default the platform default is auto-detected; pass `createApp({ backend })` (a registered name or package specifier) to pin a specific one. If no backend is available, `createApp()` rejects, so the server fails to start rather than failing on the first request.
 
-A backend package must be installed alongside the API (e.g. `@tupper/container` on macOS) — see the [SDK reference](../../docs/sdk.md).
+The backend package ships as an optional dependency and is installed automatically for the host platform (`@tupper/container` on macOS, `@tupper/firecracker` on Linux). To use a different one, install it and pass `createApp({ backend })` — see the [SDK reference](../../docs/sdk.md).
 
 ## Embed in your own Hono app
 

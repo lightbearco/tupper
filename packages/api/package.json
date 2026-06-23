@@ -1,6 +1,6 @@
 {
 	"name": "@tupper/api",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "HTTP API for Tupper sandboxes, built on Hono.",
 	"keywords": [
 		"tupper",
@@ -66,6 +66,10 @@
 		"@tupper/sdk": "workspace:*",
 		"hono": "^4.6.14",
 		"zod": "^4.0.0"
+	},
+	"optionalDependencies": {
+		"@tupper/container": "workspace:*",
+		"@tupper/firecracker": "workspace:*"
 	},
 	"publishConfig": {
 		"access": "public"

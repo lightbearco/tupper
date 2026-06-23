@@ -1,6 +1,6 @@
 {
 	"name": "@tupper/mcp",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "Model Context Protocol server for Tupper sandboxes.",
 	"keywords": [
 		"tupper",
@@ -61,6 +61,10 @@
 		"@modelcontextprotocol/sdk": "^1.24.3",
 		"@tupper/sdk": "workspace:*",
 		"zod": "^4.0.0"
+	},
+	"optionalDependencies": {
+		"@tupper/container": "workspace:*",
+		"@tupper/firecracker": "workspace:*"
 	},
 	"devDependencies": {
 		"@tupper/core": "workspace:*"
